@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales Analytics Dashboard</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.2/css/buttons.dataTables.min.css">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <aside class="sidebar">
+        <div class="sidebar-logo">
+            <h2>📊 Sales BI</h2>
+        </div>
+
+        <nav class="sidebar-menu">
+            <a href="#" class="active">🏠 Dashboard</a>
+            <a href="#sales">📈 Sales Analysis</a>
+            <a href="#product">📦 Product Analysis</a>
+            <a href="#customer">👥 Customer Analysis</a>
+            <a href="#profit">💰 Profit Analysis</a>
+            <a href="#summary">🧠 Insights</a>
+            <a href="#table">📋 Data Table</a>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+
+        <div class="top-header">
+            <div>
+                <h1>Sales Analytics Dashboard</h1>
+                <p>Interactive business intelligence dashboard using Flask, Pandas and Plotly</p>
+            </div>
+
+            <div class="header-actions">
+                <a href="/download" class="download-btn">📄 Download CSV</a>
+                <a href="/download-pdf" class="download-btn">📕 Download PDF</a>
+                <a href="/" class="download-btn secondary">⬆ Upload New CSV</a>
+            </div>
+        </div>
+
+        <div class="dataset-info-bar">
+            <div><strong>Dataset:</strong> {{ dataset_info.filename }}</div>
+            <div><strong>Rows:</strong> {{ dataset_info.rows }}</div>
+            <div><strong>Columns:</strong> {{ dataset_info.columns }}</div>
+            <div><strong>Filtered Rows:</strong> {{ dataset_info.filtered_rows }}</div>
+            <div><strong>Last Updated:</strong> {{ dataset_info.last_updated }}</div>
+        </div>
+
+        <form action="/filter" method="POST" class="filter-form">
+
+            <select name="region">
+                <option value="">All Regions</option>
+                {% for region in filter_options.regions %}
+                    <option value="{{ region }}" {% if selected_filters.region == region %}selected{% endif %}>{{ region }}</option>
+                {% endfor %}
+            </select>
+
+            <select name="category">
+                <option value="">All Categories</option>
+                {% for category in filter_options.categories %}
+                    <option value="{{ category }}" {% if selected_filters.category == category %}selected{% endif %}>{{ category }}</option>
+                {% endfor %}
+            </select>
+
+            <select name="segment">
+                <option value="">All Segments</option>
+                {% for segment in filter_options.segments %}
+                    <option value="{{ segment }}" {% if selected_filters.segment == segment %}selected{% endif %}>{{ segment }}</option>
+                {% endfor %}
+            </select>
+
+            <select name="year">
+                <option value="">All Years</option>
+                {% for year in filter_options.years %}
+                    <option value="{{ year }}" {% if selected_filters.year == year %}selected{% endif %}>{{ year }}</option>
+                {% endfor %}
+            </select>
+
+            <select name="month">
+                <option value="">All Months</option>
+                {% for month in filter_options.months %}
+                    <option value="{{ month }}" {% if selected_filters.month == month %}selected{% endif %}>{{ month }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Apply Filters</button>
+        </form>
+
+        <section class="cards">
+
+            <div class="card gradient-blue">
+                <span class="card-icon">💰</span>
+                <h2>{{ kpis.total_sales }}</h2>
+                <p>Total Sales</p>
+            </div>
+
+            <div class="card gradient-green">
+                <span class="card-icon">📦</span>
+                <h2>{{ kpis.total_orders }}</h2>
+                <p>Total Orders</p>
+            </div>
+
+            <div class="card gradient-purple">
+                <span class="card-icon">📈</span>
+                <h2>{{ kpis.avg_sales }}</h2>
+                <p>Average Sales</p>
+            </div>
+
+            <div class="card gradient-orange">
+                <span class="card-icon">💹</span>
+                <h2>{{ kpis.total_profit }}</h2>
+                <p>Total Profit</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">📊</span>
+                <h2>{{ kpis.profit_margin }}</h2>
+                <p>Profit Margin</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">🌍</span>
+                <h2>{{ kpis.top_region }}</h2>
+                <p>Top Region</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">👥</span>
+                <h2>{{ kpis.total_customers }}</h2>
+                <p>Total Customers</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">🛒</span>
+                <h2>{{ kpis.total_products }}</h2>
+                <p>Total Products</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">📍</span>
+                <h2>{{ kpis.total_regions }}</h2>
+                <p>Total Regions</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">📦</span>
+                <h2>{{ kpis.total_quantity }}</h2>
+                <p>Total Quantity</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">🏷️</span>
+                <h2>{{ kpis.avg_discount }}</h2>
+                <p>Average Discount</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">🏆</span>
+                <h2>{{ kpis.highest_sale }}</h2>
+                <p>Highest Sale</p>
+            </div>
+
+            <div class="card">
+                <span class="card-icon">📉</span>
+                <h2>{{ kpis.lowest_sale }}</h2>
+                <p>Lowest Sale</p>
+            </div>
+
+        </section>
+
+        <section class="summary-grid" id="summary">
+
+            <div class="summary-card">
+                <h2>🧠 Executive Summary</h2>
+                <ul>
+                    {% for insight in insights %}
+                        <li>{{ insight }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="summary-card">
+                <h2>💡 Recommendations</h2>
+                <ul>
+                    {% for recommendation in recommendations %}
+                        <li>{{ recommendation }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </section>
+
+        <section class="chart-grid" id="sales">
+
+            {% if charts.monthly_chart %}
+            <div class="chart-box wide-chart">
+                {{ charts.monthly_chart | safe }}
+            </div>
+            {% endif %}
+
+            {% if charts.region_chart %}
+            <div class="chart-box">
+                {{ charts.region_chart | safe }}
+            </div>
+            {% endif %}
+
+            {% if charts.category_chart %}
+            <div class="chart-box">
+                {{ charts.category_chart | safe }}
+            </div>
+            {% endif %}
+
+            {% if charts.product_chart %}
+            <div class="chart-box" id="product">
+                {{ charts.product_chart | safe }}
+            </div>
+            {% endif %}
+
+            {% if charts.customer_chart %}
+            <div class="chart-box" id="customer">
+                {{ charts.customer_chart | safe }}
+            </div>
+            {% endif %}
+
+            {% if charts.profit_region_chart %}
+            <div class="chart-box" id="profit">
+                {{ charts.profit_region_chart | safe }}
+            </div>
+            {% endif %}
+
+            {% if charts.sales_profit_chart %}
+            <div class="chart-box">
+                {{ charts.sales_profit_chart | safe }}
+            </div>
+            {% endif %}
+
+            {% if charts.quantity_chart %}
+            <div class="chart-box">
+                {{ charts.quantity_chart | safe }}
+            </div>
+            {% endif %}
+
+        </section>
+
+        <section id="table">
+            <h2 class="section-title">Data Preview</h2>
+
+            <div class="chart-box table-box">
+                {{ preview_table | safe }}
+            </div>
+        </section>
+
+        <footer class="dashboard-footer">
+            <p>Sales Analytics Dashboard v2.0 | Developed by Aadvik Singh | Python • Flask • Pandas • Plotly</p>
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.data-table').DataTable({
+            pageLength: 10,
+            dom: 'Bfrtip',
+            buttons: ['copy', 'csv', 'excel', 'print']
+        });
+    });
+</script>
+
+</body>
+</html>

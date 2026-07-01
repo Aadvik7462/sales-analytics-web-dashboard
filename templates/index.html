@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sales Analytics Web Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="upload-page">
+
+    <div class="upload-card">
+
+        <div class="logo-box">
+            <h2>📊 Sales Analytics</h2>
+        </div>
+
+        <h1>Sales Analytics Web Dashboard</h1>
+
+        <p>
+            Upload your sales CSV file to generate KPIs, interactive charts,
+            cleaned data report, and business insights.
+        </p>
+
+        <form action="/upload" method="POST" enctype="multipart/form-data" class="upload-form">
+
+            <label class="file-label">
+                Choose CSV File
+                <input type="file" name="file" accept=".csv" required>
+            </label>
+
+            <button type="submit">Upload & Analyze</button>
+
+        </form>
+
+        <div class="features">
+            <span>✅ Auto Data Cleaning</span>
+            <span>✅ KPI Dashboard</span>
+            <span>✅ Plotly Charts</span>
+            <span>✅ Report Download</span>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

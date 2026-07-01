@@ -1,0 +1,955 @@
+/* =========================
+   GOOGLE FONT
+========================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#eef3fb;
+
+    color:#1b2b52;
+
+}
+
+
+/* =========================
+HEADER
+========================= */
+
+.dashboard-container{
+
+    width:95%;
+
+    margin:30px auto;
+
+}
+
+.dashboard-container h1{
+
+    text-align:center;
+
+    font-size:42px;
+
+    color:#1f4ba5;
+
+    margin-bottom:35px;
+
+    font-weight:700;
+
+}
+
+
+/* =========================
+FILTERS
+========================= */
+
+.filter-form{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:15px;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:16px;
+
+    margin-bottom:30px;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+
+}
+
+.filter-form select{
+
+    padding:12px 16px;
+
+    min-width:170px;
+
+    border:1px solid #d9dfe8;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    background:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.filter-form select:hover{
+
+    border-color:#3567d6;
+
+}
+
+.filter-form button{
+
+    background:#2855d9;
+
+    color:white;
+
+    border:none;
+
+    padding:12px 25px;
+
+    border-radius:10px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.filter-form button:hover{
+
+    background:#123ea5;
+
+}
+
+
+/* =========================
+BUTTONS
+========================= */
+
+.download-btn{
+
+    display:inline-block;
+
+    padding:12px 22px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    color:white;
+
+    background:#2855d9;
+
+    transition:.3s;
+
+}
+
+.download-btn:hover{
+
+    background:#123ea5;
+
+}
+
+.secondary{
+
+    background:#555;
+
+}
+
+.secondary:hover{
+
+    background:#333;
+
+}
+
+.button-area{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:30px;
+
+}
+
+
+/* =========================
+KPI CARDS
+========================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+    margin-bottom:35px;
+}
+
+.card{
+    background: white;
+    border-radius: 18px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+    transition: .3s;
+    overflow: hidden;
+    min-height: 180px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.card h2{
+    color:#21459d;
+    font-weight:700;
+    margin-bottom:12px;
+
+    /* Automatically adjust text size */
+    font-size: clamp(24px, 2vw, 42px);
+
+    /* Prevent overflow */
+    width:100%;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+    line-height:1.2;
+}
+
+.card p{
+
+    font-size:18px;
+
+    font-weight:600;
+
+    color:#5b677c;
+
+}
+
+
+/* =========================
+CHARTS
+========================= */
+
+.chart-box{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    margin-bottom:35px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+
+/* =========================
+TABLE
+========================= */
+
+.section-title{
+
+    margin-bottom:20px;
+
+    color:#21459d;
+
+}
+
+.table-box{
+
+    overflow-x:auto;
+
+}
+
+.data-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    font-size:14px;
+
+}
+
+.data-table thead{
+
+    background:#21459d;
+
+    color:white;
+
+}
+
+.data-table th{
+
+    padding:12px;
+
+    border:1px solid #ddd;
+
+}
+
+.data-table td{
+
+    padding:10px;
+
+    border:1px solid #ddd;
+
+}
+
+.data-table tr:nth-child(even){
+
+    background:#f5f8fd;
+
+}
+
+.data-table tr:hover{
+
+    background:#dbe8ff;
+
+}
+
+
+/* =========================
+SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2855d9;
+
+    border-radius:20px;
+
+}
+
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:900px){
+
+.cards{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.filter-form{
+
+flex-direction:column;
+
+align-items:center;
+
+}
+
+.filter-form select{
+
+width:100%;
+
+}
+
+.button-area{
+
+flex-direction:column;
+
+}
+
+}
+
+@media(max-width:600px){
+
+.cards{
+
+grid-template-columns:1fr;
+
+}
+
+.dashboard-container h1{
+
+font-size:30px;
+
+}
+
+.card h2{
+
+font-size:30px;
+
+}
+
+}
+/* =========================
+UPLOAD PAGE
+========================= */
+
+.upload-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background: linear-gradient(135deg, #eef3fb, #dbe8ff);
+}
+
+.upload-card {
+    width: 600px;
+    background: white;
+    padding: 45px;
+    border-radius: 24px;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+}
+
+.logo-box h2 {
+    color: #21459d;
+    margin-bottom: 18px;
+    font-size: 28px;
+}
+
+.upload-card h1 {
+    font-size: 38px;
+    color: #16356f;
+    margin-bottom: 18px;
+}
+
+.upload-card p {
+    font-size: 17px;
+    color: #5b677c;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+}
+
+.file-label {
+    width: 100%;
+    padding: 22px;
+    border: 2px dashed #2855d9;
+    border-radius: 16px;
+    color: #21459d;
+    font-weight: 600;
+    cursor: pointer;
+    background: #f5f8ff;
+}
+
+.file-label input {
+    display: block;
+    margin: 12px auto 0;
+}
+
+.upload-form button {
+    width: 240px;
+    padding: 14px;
+    background: #2855d9;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.upload-form button:hover {
+    background: #123ea5;
+}
+
+.features {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    font-size: 14px;
+    color: #1b2b52;
+}
+
+@media(max-width:600px) {
+    .upload-card {
+        width: 100%;
+        padding: 30px;
+    }
+
+    .upload-card h1 {
+        font-size: 28px;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+}
+/* ==========================================================
+   PHASE 5 - PROFESSIONAL SIDEBAR LAYOUT
+==========================================================*/
+
+.app-layout{
+    display:flex;
+    min-height:100vh;
+    background:#eef3fb;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+
+    width:260px;
+
+    background:#173a8b;
+
+    color:white;
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    bottom:0;
+
+    overflow-y:auto;
+
+    box-shadow:4px 0 20px rgba(0,0,0,.15);
+
+}
+
+.sidebar-logo{
+
+    padding:30px 20px;
+
+    text-align:center;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+.sidebar-logo h2{
+
+    color:white;
+
+    font-size:28px;
+
+    font-weight:700;
+
+}
+
+.sidebar-menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-top:25px;
+
+}
+
+.sidebar-menu a{
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:18px 28px;
+
+    font-size:16px;
+
+    transition:.3s;
+
+}
+
+.sidebar-menu a:hover{
+
+    background:rgba(255,255,255,.12);
+
+    padding-left:38px;
+
+}
+
+.sidebar-menu .active{
+
+    background:#2855d9;
+
+}
+
+/* ================= MAIN ================= */
+
+.main-content{
+
+    margin-left:260px;
+
+    width:calc(100% - 260px);
+
+    padding:30px;
+
+}
+
+/* ================= HEADER ================= */
+
+.top-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:white;
+
+    padding:25px 30px;
+
+    border-radius:18px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    margin-bottom:30px;
+
+}
+
+.top-header h1{
+
+    margin:0;
+
+    font-size:36px;
+
+    color:#21459d;
+
+}
+
+.top-header p{
+
+    margin-top:8px;
+
+    color:#666;
+
+}
+
+.header-actions{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+/* ================= FILTER ================= */
+
+.filter-form{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:18px;
+
+    margin-bottom:30px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+/* ================= KPI ================= */
+
+.card{
+
+    position:relative;
+
+}
+
+.card-icon{
+
+    font-size:42px;
+
+    display:block;
+
+    margin-bottom:12px;
+
+}
+
+/* ================= GRADIENTS ================= */
+
+.gradient-blue{
+
+    background:linear-gradient(135deg,#2f80ed,#56ccf2);
+
+    color:white;
+
+}
+
+.gradient-blue h2,
+.gradient-blue p{
+
+    color:white;
+
+}
+
+.gradient-green{
+
+    background:linear-gradient(135deg,#11998e,#38ef7d);
+
+    color:white;
+
+}
+
+.gradient-green h2,
+.gradient-green p{
+
+    color:white;
+
+}
+
+.gradient-purple{
+
+    background:linear-gradient(135deg,#7b2ff7,#f107a3);
+
+    color:white;
+
+}
+
+.gradient-purple h2,
+.gradient-purple p{
+
+    color:white;
+
+}
+
+.gradient-orange{
+
+    background:linear-gradient(135deg,#ff8008,#ffc837);
+
+    color:white;
+
+}
+
+.gradient-orange h2,
+.gradient-orange p{
+
+    color:white;
+
+}
+
+/* ================= CHART GRID ================= */
+
+.chart-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:25px;
+
+}
+
+.wide-chart{
+
+    grid-column:span 2;
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1200px){
+
+.chart-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.wide-chart{
+
+grid-column:span 1;
+
+}
+
+}
+
+@media(max-width:900px){
+
+.sidebar{
+
+width:100%;
+
+height:auto;
+
+position:relative;
+
+}
+
+.main-content{
+
+margin-left:0;
+
+width:100%;
+
+}
+
+.top-header{
+
+flex-direction:column;
+
+gap:20px;
+
+text-align:center;
+
+}
+
+.header-actions{
+
+flex-direction:column;
+
+width:100%;
+
+}
+
+}
+/* =========================
+PHASE 5.2 - DATATABLE
+========================= */
+
+.dataTables_wrapper {
+    margin-top: 15px;
+}
+
+.dataTables_filter {
+    margin-bottom: 15px;
+}
+
+.dataTables_filter input {
+    padding: 10px 14px;
+    border: 1px solid #d9dfe8;
+    border-radius: 10px;
+    outline: none;
+}
+
+.dataTables_length select {
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #d9dfe8;
+}
+
+.dt-buttons {
+    margin-bottom: 15px;
+}
+
+.dt-button {
+    background: #2855d9 !important;
+    color: white !important;
+    border: none !important;
+    padding: 8px 15px !important;
+    border-radius: 8px !important;
+    margin-right: 8px !important;
+    font-weight: 600 !important;
+}
+
+.dt-button:hover {
+    background: #123ea5 !important;
+}
+
+.dataTables_paginate .paginate_button {
+    padding: 6px 12px !important;
+    border-radius: 8px !important;
+}
+
+.dataTables_paginate .paginate_button.current {
+    background: #2855d9 !important;
+    color: white !important;
+}
+/* ==========================================================
+   PHASE 5.3 - DATASET INFO + EXECUTIVE SUMMARY
+========================================================== */
+
+.dataset-info-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    background: white;
+    padding: 18px 22px;
+    border-radius: 18px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+.dataset-info-bar div {
+    background: #f5f8ff;
+    padding: 14px;
+    border-radius: 12px;
+    color: #1b2b52;
+    font-size: 14px;
+}
+
+.dataset-info-bar strong {
+    color: #21459d;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.summary-card {
+    background: white;
+    padding: 28px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+.summary-card h2 {
+    color: #21459d;
+    margin-bottom: 18px;
+}
+
+.summary-card ul {
+    padding-left: 22px;
+}
+
+.summary-card li {
+    margin-bottom: 12px;
+    line-height: 1.6;
+    color: #42526e;
+    font-size: 15px;
+}
+
+.dashboard-footer {
+    text-align: center;
+    padding: 25px;
+    margin-top: 30px;
+    color: #5b677c;
+    font-weight: 500;
+}
+
+@media(max-width:900px) {
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+}
