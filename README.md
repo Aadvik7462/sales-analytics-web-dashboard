@@ -6,7 +6,6 @@ A professional Sales Analytics Dashboard built with **Flask**, **Pandas**, and *
 
 ## 🚀 Live Demo
 
-> Add your Render deployment link here after deployment.
 
 https://sales-analytics-web-dashboard.onrender.com/
 
